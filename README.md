@@ -4,8 +4,7 @@
 </div>
 
 # Swayam Singal  
-[![Email](https://img.shields.io/badge/Email-swayam.singal@gmail.com-blue?style=for-the-badge&logo=gmail&logoColor=white)](mailto:swayam.singal@gmail.com)  
-[![Phone](https://img.shields.io/badge/Phone-%2B91--6291465127-blue?style=for-the-badge&logo=android&logoColor=white)](tel:+916291465127)  
+[![Email](https://img.shields.io/badge/Email-swayam.singal@gmail.com-blue?style=for-the-badge&logo=gmail&logoColor=white)](mailto:swayam.singal@gmail.com)   
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-swayamsdomain-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/swayamsdomain)  
 [![GitHub](https://img.shields.io/badge/GitHub-swayam8624-black?style=for-the-badge&logo=github)](https://github.com/swayam8624)  
 <br>
