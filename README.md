@@ -12,7 +12,7 @@
 [![Email](https://img.shields.io/badge/Email-swayam.singal@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:swayam.singal@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-swayamsdomain-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/swayamsdomain)
 [![GitHub](https://img.shields.io/badge/GitHub-swayam8624-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/swayam8624)
-[![Portfolio](https://img.shields.io/badge/Portfolio-View_Here-00A8E8?style=for-the-badge&logo=vercel&logoColor=white)](https://merafolio.vercel.app)
+[![Portfolio](https://img.shields.io/badge/Portfolio-View_Here-00A8E8?style=for-the-badge&logo=vercel&logoColor=white)](https://yugenkairo.vercel.app)
 
 </div>
 
