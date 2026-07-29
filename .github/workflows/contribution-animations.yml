@@ -1,4 +1,4 @@
-name: Generate contribution animations
+name: Refresh GitHub profile visuals
 
 on:
   schedule:
@@ -7,39 +7,82 @@ on:
   push:
     branches:
       - main
+      - chore/profile-readme-2026
     paths:
-      - ".github/workflows/contribution-animations.yml"
+      - README.md
+      - scripts/generate_profile_assets.py
+      - .github/workflows/contribution-animations.yml
 
 permissions:
   contents: write
 
 concurrency:
-  group: contribution-animations
+  group: profile-visuals-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   generate:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
-      - name: Generate contribution snake
+      - name: Check out the active branch
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Generate statistics, streak, and weekly signal
+        run: python3 scripts/generate_profile_assets.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: ${{ github.repository_owner }}
+
+      - name: Generate isometric contribution skyline
+        uses: yoshi389111/github-profile-3d-contrib@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+
+      - name: Generate contribution Snake
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: ${{ github.repository_owner }}
-          outputs: |
-            dist/github-contribution-grid-snake.svg
-            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
-
-      - name: Generate Pac-Man contribution graph
-        uses: abozanona/pacman-contribution-graph@main
-        with:
-          github_user_name: ${{ github.repository_owner }}
-
-      - name: Publish generated assets
-        uses: peaceiris/actions-gh-pages@v4
-        with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: output
-          publish_dir: ./dist
-          force_orphan: true
-          commit_message: "chore: update contribution animations"
+          outputs: |
+            assets/profile/github-contribution-grid-snake.svg?palette=github-light&color_snake=%237c3aed
+            assets/profile/github-contribution-grid-snake-dark.svg?palette=github-dark&color_snake=%23a78bfa
+
+      - name: Validate every README asset
+        shell: bash
+        run: |
+          set -euo pipefail
+          files=(
+            assets/profile/github-stats-light.svg
+            assets/profile/github-stats-dark.svg
+            assets/profile/github-streak-light.svg
+            assets/profile/github-streak-dark.svg
+            assets/profile/contribution-wave-light.svg
+            assets/profile/contribution-wave-dark.svg
+            assets/profile/github-contribution-grid-snake.svg
+            assets/profile/github-contribution-grid-snake-dark.svg
+            profile-3d-contrib/profile-season-animate.svg
+            profile-3d-contrib/profile-night-rainbow.svg
+          )
+          for file in "${files[@]}"; do
+            test -s "$file" || { echo "Missing or empty asset: $file"; exit 1; }
+          done
+
+      - name: Commit refreshed visuals
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/profile profile-3d-contrib
+          if git diff --cached --quiet; then
+            echo "Profile visuals are already current."
+            exit 0
+          fi
+          git commit -m "chore: refresh profile visuals"
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
