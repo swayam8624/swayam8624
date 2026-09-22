@@ -81,7 +81,8 @@ My main engineering direction is **Kairo**: a modular 3D engine ecosystem built 
 | **[BentoML Recreation](https://github.com/swayam8624/bentomlReCreation)** | Inference-serving benchmark focused on throughput, latency, MFU, and power telemetry | Python · GPU inference · MLOps |
 | **[SME Finance Hub](https://github.com/swayam8624/sme-finance-hub)** | Finance platform for Indian SMEs with GST, reporting, reconciliation, offline workflows, and local AI | TypeScript · React · Supabase · Tauri |
 | **[NES Emulator](https://github.com/swayam8624/NESEmulator)** | 6502 CPU, PPU, memory and controller emulation experiments | C++ · Emulation · Graphics |
-| **[Vulkax](https://github.com/swayam8624/Vulkax)** | Vulkan-focused rendering and engine experimentation | C++ · Vulkan · CMake |
+| **[Vulkax / Reality Probe](https://github.com/swayam8624/Vulkax)** | Completed counterfactual physical-verification research system for captured worlds: detects deceptive repairs that improve observational fit while degrading unseen physical behavior, using mechanism-selective probes, frozen evidence gates, and fail-closed unresolved decisions | C++20 · Vulkan · Metal · Physics Research |
+| **[MAVEB / Repair What Matters](https://github.com/swayam8624/Maveb)** | Completed persistent-world revision research system built around Criticality-Bounded Revision Cones (CBRC): certifies bounded local recomputation against explicit output-error tolerances, with exact/analytic dependencies, automatic full-rebuild fallback, trained-3DGS validation, and reproducible evidence | C++23 · Metal · 3DGS · Systems Research |
 
 ## `research && writing`
 
